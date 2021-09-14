@@ -11,8 +11,6 @@ c = 2.99*10**8
 d = {'Mass': [0.1,0.5,1,2,5,10,20,50], 'Radius': [0.15,0.5,1.0,1.7,3.3,6.3,11,23]}
 data = pd.DataFrame(d)
 
-
-
 def volume(R):
     return (4/3)*np.pi*R**3
 
