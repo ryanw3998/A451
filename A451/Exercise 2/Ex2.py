@@ -63,13 +63,14 @@ fit_low = scale_planck(wl,temp_low)
 
 
 # Plotting scaled planck functions and spectrum on same plot
-# Spectrum is in black. Labels are added to each line for the legend
+# Spectrum is in black. Fit is in blue, fit high is in orange,
+# fit low is in green. Labels are added to each line for the legend
 # I used label='Teff: {} K'.format(teff), which allows one to input 
 # variables (teff) into strings.
 plt.plot(wl,flux,label='Data',color='k')
-plt.plot(wl,fit,label='Teff: {} K'.format(teff))
-plt.plot(wl,fit_high,label='Teff: {} K'.format(teff+2000))
-plt.plot(wl,fit_low,label='Teff: {} K'.format(teff-2000))
+plt.plot(wl,fit,label='Teff: {} K'.format(teff),color='b')
+plt.plot(wl,fit_high,label='Teff: {} K'.format(teff+2000),color='orange')
+plt.plot(wl,fit_low,label='Teff: {} K'.format(teff-2000),color='g')
 
 # Axis labels
 plt.ylabel('Normalized Flux')
