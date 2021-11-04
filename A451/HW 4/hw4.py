@@ -101,4 +101,3 @@ percent_pp = 100*.85*E_pp/(.85*E_pp+.15*E_cno)
 percent_cno = 100*.15*E_cno/(.85*E_pp+.15*E_cno)
 
 print(np.round(percent_pp,4),np.round(percent_cno,4))
-
