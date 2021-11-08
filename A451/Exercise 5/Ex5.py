@@ -35,17 +35,24 @@ def luminosity(R,T):
 def temperature(L,R):
     return (L/(R**2))**(1/4)
 
+# Log space time array
 time_arr = np.logspace(6,11,20)
 
+# Calculating radius of star
 radius_star = wd_radius(mass)
+# Calculating inital luminosity
 L0_star = luminosity(radius_star,Ti/Tsun)
+# Calculating lum as function of time
 Lvt = lum_func_time(L0_star,time_arr,tau0_wd)
+# Calculating temperature as function of time
 Tvt = temperature(Lvt,radius_star)
 
+# Creating data frame to save table
 table_dict = {'log(Time)':time_arr,'log(L/Lsun)':Lvt,'log(T/Tsun)':Tvt}
 table_df = pd.DataFrame(table_dict)
 table_df.to_csv('wd_table.csv')
 
+# using tabulate to print readable table to terminal
 print(tabulate(table_df,headers='keys',tablefmt='psql',floatfmt=['int','.3e','.3f','.3f']))
 
 
