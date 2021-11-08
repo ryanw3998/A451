@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 from tabulate import tabulate
 
 # Relevant values
-Tsun = 5778.0 # K
+Tsun = 5780.0 # K
+Lsun = 3.83*10**26 # W
 
 # Values provided in problem
 mass = 0.5 # Msun
@@ -48,7 +49,7 @@ Lvt = lum_func_time(L0_star,time_arr,tau0_wd)
 Tvt = temperature(Lvt,radius_star)
 
 # Creating data frame to save table
-table_dict = {'log(Time)':time_arr,'log(L/Lsun)':Lvt,'log(T/Tsun)':Tvt}
+table_dict = {'Time':time_arr,'L/Lsun':Lvt,'T/Tsun':Tvt}
 table_df = pd.DataFrame(table_dict)
 table_df.to_csv('wd_table.csv')
 
