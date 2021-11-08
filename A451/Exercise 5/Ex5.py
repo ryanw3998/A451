@@ -7,6 +7,7 @@ A451 Python Exercise 5 Key
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from tabulate import tabulate
 
 # Relevant values
 Tsun = 5778.0 # K
@@ -37,25 +38,14 @@ def temperature(L,R):
 time_arr = np.logspace(6,11,20)
 
 radius_star = wd_radius(mass)
-print(radius_star)
 L0_star = luminosity(radius_star,Ti/Tsun)
-print(L0_star)
 Lvt = lum_func_time(L0_star,time_arr,tau0_wd)
-print(Lvt)
 Tvt = temperature(Lvt,radius_star)
-print(Tvt)
 
 table_dict = {'log(Time)':time_arr,'log(L/Lsun)':Lvt,'log(T/Tsun)':Tvt}
 table_df = pd.DataFrame(table_dict)
 table_df.to_csv('wd_table.csv')
 
-plt.loglog(time_arr,Lvt,label='0.5 Msun White Dwarf')
-plt.ylabel('log(L/Lsun)')
-plt.xlabel('log(t) (years)')
-plt.show()
+print(tabulate(table_df,headers='keys',tablefmt='psql',floatfmt=['int','.3e','.3f','.3f']))
 
 
-plt.loglog(time_arr,Tvt*Tsun,label='0.5 Msun White Dwarf')
-plt.ylabel('log(T/Tsun)')
-plt.xlabel('log(t) (years)')
-plt.show()
