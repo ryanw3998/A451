@@ -34,14 +34,15 @@ n_peaks = 11
 date1 = 2106
 date2 = 2225
 
+# Calculating period
 period = np.round((date2-date1)/n_peaks,2)
 print(period)
 
+# Getting phase for all data points
 phase = ((date-date1)/period) % 1
-print(((date-date1)/period))
 print(phase)
 
-
+# Plotting
 plt.scatter(phase,mag,s=2)
 plt.xlabel('Phase')
 plt.ylabel('Mag')
